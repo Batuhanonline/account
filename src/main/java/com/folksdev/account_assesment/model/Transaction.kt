@@ -19,6 +19,20 @@ data class Transaction(
         @JoinColumn(name = "account_id", nullable = false)
         val account: Account
 ) {
+        constructor() : this(
+                id = null,
+                amount = null,
+                transactionDate = LocalDateTime.now(),
+                transactionType = TransactionType.INITAL,
+                account = Account()
+        )
+        constructor(amount: BigDecimal, account: Account) : this(
+                id = null,
+                amount = amount,
+                transactionDate = LocalDateTime.now(),
+                transactionType = TransactionType.INITAL,
+                account = account
+        )
         override fun equals(other: Any?): Boolean {
                 if (this === other) return true
                 if (javaClass != other?.javaClass) return false

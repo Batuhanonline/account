@@ -18,7 +18,7 @@ public class AccountDtoConverter {
     public AccountDto convert(Account from) {
         return new AccountDto(from.getId(),
                 from.getBalance(),
-                from.getCretionDate(),
+                from.getCreationDate(),
                 customerDtoConverter.convertToAccountCustomer(from.getCustomer()),
                 from.getTransaction().stream().map(transactionDtoConverter::convert).collect(Collectors.toSet()));
     }

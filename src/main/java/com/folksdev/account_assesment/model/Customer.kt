@@ -1,22 +1,26 @@
 package com.folksdev.account_assesment.model
 
-import jakarta.persistence.*
 import org.hibernate.annotations.GenericGenerator
+import jakarta.persistence.*
 
 @Entity
 data class Customer(
+
         @Id
         @GeneratedValue(generator = "UUID")
-        @GenericGenerator(name = "UUDI", strategy = "org.hibernate.id.UUIDGenerator")
+        @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
         val id: String?,
 
-        val name : String?,
+        val name: String?,
         val surname: String?,
 
-        @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-        val accounts: Set<Account>?
-
+        @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+        val accounts: Set<Account>
 ) {
+
+        constructor(name: String, surname: String) : this("", name, surname, HashSet())
+        constructor() : this("", null, null, HashSet())
+
         override fun equals(other: Any?): Boolean {
                 if (this === other) return true
                 if (javaClass != other?.javaClass) return false

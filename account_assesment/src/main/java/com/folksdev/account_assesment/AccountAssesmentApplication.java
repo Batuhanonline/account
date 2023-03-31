@@ -5,8 +5,14 @@ import com.folksdev.account_assesment.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
+import java.time.Clock;
 import java.util.HashSet;
+import java.util.UUID;
+import java.util.function.Supplier;
 
 @SpringBootApplication
 public class AccountAssesmentApplication implements CommandLineRunner {
@@ -26,4 +32,5 @@ public class AccountAssesmentApplication implements CommandLineRunner {
 		Customer customer = customerRepository.save(new Customer("", "Batuhan", "Guven", new HashSet<>()));
 		System.out.println(customer);
 	}
+
 }

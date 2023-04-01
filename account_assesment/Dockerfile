@@ -8,6 +8,6 @@ COPY src src
 RUN ./mvnw package
 
 FROM openjdk:19
-WORKDIR account-api
+WORKDIR /account_assesment
 COPY --from=build target/*.jar account_assesment.jar
 ENTRYPOINT ["java", "-jar", "account_assesment.jar"]

@@ -30,6 +30,7 @@ public class AccountAssesmentApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Customer customer = customerRepository.save(new Customer("", "Batuhan", "Guven", new HashSet<>()));
+		Customer customer2 = customerRepository.save(new Customer("", "Emirhan", "Guven", new HashSet<>()));
 		System.out.println(customer);
 	}
 

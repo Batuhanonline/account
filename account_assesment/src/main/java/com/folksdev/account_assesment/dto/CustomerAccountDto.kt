@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 
 data class CustomerAccountDto(
         val id: String,
-        val balace: BigDecimal? = BigDecimal.ZERO,
+        val balance: BigDecimal? = BigDecimal.ZERO,
         val transactions: Set<TransactionDto>?,
         val creationDate: LocalDateTime
 )

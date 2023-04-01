@@ -7,6 +7,9 @@ import com.folksdev.account_assesment.model.Customer;
 import com.folksdev.account_assesment.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -24,5 +27,12 @@ public class CustomerService {
 
     public CustomerDto getCustomerById(String customerId) {
         return customerDtoConverter.convertToCustomerDto(findCustomerById(customerId));
+    }
+
+    public List<CustomerDto> getCustomerAll() {
+        return customerRepository.findAll()
+                .stream()
+                .map(customerDtoConverter::convertToCustomerDto)
+                .collect(Collectors.toList());
     }
 }

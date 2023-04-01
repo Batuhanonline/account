@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  app:
+    image: 'batuhanonline/account-api:latest'
+    container_name: account-api
+    ports:
+      - 8080:8080
+  fe:
+    image: 'batuhanonline/account-fe:latest'
+    container_name: account-fe
+    ports:
+      - 3000:3000
